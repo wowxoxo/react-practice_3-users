@@ -1,11 +1,23 @@
 import { Component } from "react";
 import User from "./User";
+// import { User as UserI } from '../state/users-context'
+import { UserI } from '../state/users-context'
+
 
 import classes from "./Users.module.css";
 
-class Users extends Component {
-  constructor() {
-    super();
+type UsersProps = {
+  users: UserI[];
+}
+
+type UsersState = {
+  showUsers: boolean,
+  more: string
+}
+
+class Users extends Component<UsersProps, UsersState> {
+  constructor(props: UsersProps) {
+    super(props);
     this.state = {
       showUsers: true,
       more: "kjhhh"
@@ -13,13 +25,19 @@ class Users extends Component {
     this.toggleUsersHandler2 = this.toggleUsersHandler.bind(this);
   }
 
+  // state: UsersState = { showUsers: true, more: "kjhhh" };
+
   toggleUsersHandler() {
     this.setState((curState) => {
       return { showUsers: !curState.showUsers };
     });
+    // this.setState(prevState => ({ showUsers: !prevState.showUsers}))
   }
 
+  toggleUsersHandler2() {}
+
   toggleUsersHandler3 = () => {
+    // window.yaCounterXXXXXX.reachGoal('asas')
     this.setState((curState) => {
       return { showUsers: !curState.showUsers };
     });
