@@ -29,7 +29,7 @@ class UserFinder extends Component<{}, UserFinderState> {
     this.setState({ searchTerm: event.target.value });
   }
 
-  componentDidUpdate(prevProps: {}, prevState: UserFinderState) {
+  componentDidUpdate(prevProps: {}, prevState: typeof this.state) {
     if (prevState.searchTerm !== this.state.searchTerm) {
       this.setState({
         filteredUsers: this.context.users.filter((user) =>
@@ -37,6 +37,10 @@ class UserFinder extends Component<{}, UserFinderState> {
         )
       });
     }
+  }
+
+  stateUpdFromObject =(obj: Partial<typeof this.state>) => {
+    this.setState({ ...this.state, ...obj })
   }
 
   // useEffect(() => {
