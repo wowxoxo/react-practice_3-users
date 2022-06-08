@@ -44,6 +44,7 @@ class Users extends Component<UsersProps, UsersState> {
   };
 
   render() {
+    // throw Error('sds')
     const usersList = (
       <ul>
         {this.props.users.map((user) => (
